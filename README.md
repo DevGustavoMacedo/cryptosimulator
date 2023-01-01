@@ -1,0 +1,7 @@
+<h1>Crypto Simulator <img src="./public/logo.svg" alt="Logo Crypto Simulator" height="30px" /></h1>
+
+- Generate a custom QrCode! 
+- Tech stack: ![TypeScript](https://img.shields.io/badge/typescript-e2c219.svg?style=for-the-badge&logo=typescript&logoColor=000) ![Vite](https://img.shields.io/badge/vite-e2c219.svg?style=for-the-badge&logo=vite&logoColor=000) ![Styled   Components](https://img.shields.io/badge/styled--components-e2c219.svg?style=for-the-badge&logo=styledcomponents&logoColor=000) ![ReactJS](https://img.shields.io/badge/ReactJS-e2c219.svg?style=for-the-badge&logo=react&logoColor=000)
+- **[Use it now](https://cryptosimulator.vercel.app)**
+ 
+![Page Layout](https://raw.githubusercontent.com/gugamacedo/gugamacedo-vercel/main/public/cryptosimulator.png)
