@@ -235,7 +235,7 @@ const App = () => {
         </S.AddButton>
         <span>
           Developed by{' '}
-          <a href="https://github.com/gugamacedo" target="blank">
+          <a href="https://github.com/devgustavomacedo" target="blank">
             @GustavoMacedo
           </a>
         </span>
