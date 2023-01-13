@@ -21,6 +21,8 @@ export const generateLink = (date: Date, coin: string, dateType: 'start' | 'fina
     }&end=${timeStampDate + 60000}`
   }
 
+  console.log(link)
+
   return link
 }
 

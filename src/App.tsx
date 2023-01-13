@@ -98,6 +98,7 @@ const App = () => {
 
   const setItemToSubmit = async (values: ItemProps): Promise<ItemProps> => {
     const { id, startDate, finalDate, category, qtd, coins } = values
+    console.log(values)
 
     let newId: string = ''
 
@@ -136,6 +137,8 @@ const App = () => {
       coins,
       qtd,
     }
+
+    console.log(newItem)
 
     return newItem
   }
