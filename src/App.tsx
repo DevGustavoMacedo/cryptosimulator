@@ -98,7 +98,6 @@ const App = () => {
 
   const setItemToSubmit = async (values: ItemProps): Promise<ItemProps> => {
     const { id, startDate, finalDate, category, qtd, coins } = values
-    console.log(values)
 
     let newId: string = ''
 
@@ -110,20 +109,35 @@ const App = () => {
 
     let newOutcome = 0
 
-    const prices: number[] = []
+    const prices = {
+      startPrice: 0,
+      finalPrice: 0,
+    }
 
-    await fetchPriceUSD(generateLink(startDate, coins, 'start'), qtd)
-      .then((data) => prices.push(data[0]))
-      .catch((error) => console.log(error))
+    let plusMs = 0
 
-    await fetchPriceUSD(generateLink(finalDate, coins, 'final'), qtd)
-      .then((data) => prices.push(data[0]))
-      .catch((error) => console.log(error))
+    while (prices.startPrice === 0) {
+      await fetchPriceUSD(generateLink(startDate, coins, 'start', plusMs), qtd)
+        .then((price) => (price > 0 ? (prices.startPrice = price) : 0))
+        .catch((error) => console.log(error))
+
+      plusMs += 3600000
+    }
+
+    plusMs = 0
+
+    while (prices.finalPrice === 0) {
+      await fetchPriceUSD(generateLink(finalDate, coins, 'final', plusMs), qtd)
+        .then((price) => (price > 0 ? (prices.finalPrice = price) : 0))
+        .catch((error) => console.log(error))
+
+      plusMs += 3600000
+    }
 
     if (category === 'buy') {
-      newOutcome = prices[1] - prices[0]
+      newOutcome = prices.finalPrice - prices.startPrice
     } else if (category === 'sell') {
-      newOutcome = prices[0] - prices[1]
+      newOutcome = prices.startPrice - prices.finalPrice
     }
 
     newOutcome = Number(newOutcome.toFixed(2))
@@ -137,8 +151,6 @@ const App = () => {
       coins,
       qtd,
     }
-
-    console.log(newItem)
 
     return newItem
   }
